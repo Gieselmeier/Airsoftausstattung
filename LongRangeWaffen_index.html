@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Airsoftausruestung</title>
+		<style>
+			body {
+				background-color: #151515;
+			}
+			h5	{
+				color: #C0392B;
+  				transform: rotate(-35deg);
+  				margin-left: -50px;
+  				width: 100px;
+			
+  				border-radius: 10px;
+  				padding: 10px;
+  				box-shadow: 0px 0px 10px rgba(23, 32, 42);
+  				position: relative;
+  				left: 150px;
+			}
+  			h4 {
+    				color: #00FFFF; /* Neon-Blau */
+ 			}
+			h1 {
+  				color: #00FFFF;
+  				font-weight: bold;
+  				font-size: 36px;
+  				text-decoration: underline;
+  				text-underline-position: under;
+  				text-decoration-color: #00FF00; /* Neon-Grün */
+  				text-decoration-thickness: 0.2em;
+  				text-decoration-style: dashed;
+  				text-underline-offset: 0.1em;
+  				padding-left: 2.0em;
+  				padding-right: 2.0em;
+			}
+
+			table {
+				margin: 0 auto;
+				border-spacing: 10px;
+			}
+			td {
+				padding: 10px;
+				border: 1px solid black;
+				text-align: center;
+			}
+			img {
+				display: block;
+				margin: 0 auto;
+				border: 1px solid black;
+			}
+			h4 {
+				margin-top: 0;
+			}
+
+			/* Gestaltung für das Inhaltsverzeichnis */
+  #toc a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+  }
+  #toc a:hover {
+    background-color: #eee;
+  }
+  #toc a.active {
+    color: #00FFFF;
+  }
+
+  /* Stil für Bilder */
+  .image {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 13px;
+  } 
+  .image:hover .overlay {
+    opacity: 0.8;
+  }
+  .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image .overlay span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+		</style>
+		<script>
+    		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
+  function setActiveLink() {
+    // Holt alle Links des Inhaltsverzeichnisses
+    var links = document.querySelectorAll('#toc a');
+    // Durchläuft alle Links
+    for (var i = 0; i < links.length; i++) {
+      // Holt den Link und den zugehörigen Bild-Container
+      var link = links[i];
+      var imageContainer = document.querySelector(link.getAttribute('href'));
+      // Wenn der Bild-Container gerade sichtbar ist, markiert den Link als aktiv
+      if (isElementInViewport(imageContainer)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    }
+  }
+
+  // Funktion, um zu überprüfen, ob ein Element gerade sichtbar ist
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Fügt das Inhaltsverzeichnis hinzu
+  function createToc() {
+    // Holt alle Bild-Container und durchläuft sie
+    var imageContainers = document.querySelectorAll('.image');
+    for (var i = 0; i < imageContainers.length; i++) {
+      var imageContainer = imageContainers[i];
+      // Erstellt einen Link zum Bild-Container im Inhaltsverzeichnis
+      var link = document.createElement('a');
+      link.setAttribute
+	('href', '#' + imageContainer.id);
+link.textContent = imageContainer.querySelector('img').alt;
+// Erstellt eine Listenelement für den Link im Inhaltsverzeichnis
+var listItem = document.createElement('li');
+listItem.appendChild(link);
+// Fügt das Listenelement zum Inhaltsverzeichnis hinzu
+toc.appendChild(listItem);
+}
+}
+
+// Ruft die Funktion zum Erstellen des Inhaltsverzeichnisses auf
+createToc();
+  		</script>
+	</head>
+	<body>
+		<div id="toc">
+		</div>	
+  		<div class="image" id="Gear">
+			<a href="/Airsoftausstattung/index.html">
+    			<img src="/Airsoftausstattung/AusrüstungInhaltsverzeichnis.png" alt="Gear">
+    			<div class="overlay">
+      				<span>Schutzausrüstung / Gear</span>
+   			</div>
+				</div></a>
+	  	<div class="image" id="Waffen">
+	  		<a href="/Airsoftausstattung/Waffen_index.html">
+    			<img src="/Airsoftausstattung/HandfeuerwaffenInhaltsverzeichnis.png" alt="Waffen">
+    			<div class="overlay">
+      				<span>Handfeuerwaffen</span>
+			</div></a>
+  		</div>
+		<div class="image" id="LongRangeWaffen">
+			<a href="">
+    			<img src="/Airsoftausstattung/LongRangeWaffenInhaltsverzeichnis.png" alt="LongRangeWaffen">
+    			<div class="overlay">
+      				<span>LongRangeWaffen</span>
+   			</div>
+				</div></a>
+		
+  		<div class="image" id="In Bearbeitung">
+    			<img src="/Airsoftausstattung/FragezeichenInhaltsverzeichnis.png" alt="In Bearbeitung">
+    			<div class="overlay">
+      				<span>In Bearbeitung</span>
+    			</div>
+  		</div>
+		<center><h1> Long-Range Waffen </h1></center>
+		<div class="text-container">
+  			<h5>Weitere Vorschläge zur Ergänzung mir schicken ;D</h5>
+		</div>
+
+		<table>
+			<tr>
+				<td>
+					<h4>Taktischer Helm</h4>
+					<a href="https://www.amazon.de/Taktischer-Militär-Stil-Schutzhelm-Outdoor-Sportarten-Mountainbike/dp/B07JKLXN3G/ref=pd_vtp_h_pd_vtp_h_sccl_3/258-1779023-8581945?pd_rd_w=w0mFM&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=X563D6EF407678VE7528&pd_rd_wg=nqJrq&pd_rd_r=1de369da-ef8e-479f-81e8-3615b9c1e5fd&pd_rd_i=B07JKLXN3G&psc=1"><img src="https://m.media-amazon.com/images/I/71v6ozstyLL._AC_SX679_.jpg" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>Sturmhaube</h4>
+					<a href="https://www.amazon.de/fuinloth-Sturmhauben-Gesichtshaube-Fahrrad-Gesichtsmaske-Balaclavas/dp/B086Z2WR6Y/ref=pd_vtp_h_pd_vtp_h_sccl_1/258-1779023-8581945?pd_rd_w=A3mNb&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=59W5TT4KEJPE8N4D6EHT&pd_rd_wg=sEr4E&pd_rd_r=b83cce2c-bd11-4fa9-8cf1-c455a055d84c&pd_rd_i=B086Z2WR6Y&psc=1"><img src="https://m.media-amazon.com/images/I/61NjK2YHpHL._AC_UX679_.jpg" width="120" height="190"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4>Taktische Handschuhe</h4>
+					<a href="https://www.amazon.de/HIKEMAN-Handschuhe-geeignet-Radfahren-Lumbering/dp/B08M9BFRYQ/ref=pd_vtp_h_pd_vtp_h_sccl_4/258-1779023-8581945?pd_rd_w=A3mNb&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=59W5TT4KEJPE8N4D6EHT&pd_rd_wg=sEr4E&pd_rd_r=b83cce2c-bd11-4fa9-8cf1-c455a055d84c&pd_rd_i=B08M9BFRYQ&psc=1"><img src="https://m.media-amazon.com/images/I/81nONJ+wwzL._AC_SX679_.jpg" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4>Taktische Weste</h4>
+					<a href="https://www.amazon.de/QHIU-Taktische-Camouflage-Multifunktions-verstellbares/dp/B07FTDMNJ2/ref=d_bmx_dp_5dbxri9o_sccl_2_5/258-1779023-8581945?pd_rd_w=zNEms&content-id=amzn1.sym.1e923e5a-6bbe-4eda-a9b1-1e1c54cafff7&pf_rd_p=1e923e5a-6bbe-4eda-a9b1-1e1c54cafff7&pf_rd_r=59W5TT4KEJPE8N4D6EHT&pd_rd_wg=sEr4E&pd_rd_r=b83cce2c-bd11-4fa9-8cf1-c455a055d84c&pd_rd_i=B07FTDMNJ2&psc=1"><img src="https://m.media-amazon.com/images/I/91BO2lzBBcL._AC_UX679_.jpg" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>Taktische Weste</h4>
+					<a href="https://www.amazon.de/Huntvp-Wasserdicht-Einstellbar-Einsatzweste-militärisch/dp/B07TTSC2MJ/ref=d_bmx_dp_5dbxri9o_sccl_2_4/258-1779023-8581945?pd_rd_w=zNEms&content-id=amzn1.sym.1e923e5a-6bbe-4eda-a9b1-1e1c54cafff7&pf_rd_p=1e923e5a-6bbe-4eda-a9b1-1e1c54cafff7&pf_rd_r=59W5TT4KEJPE8N4D6EHT&pd_rd_wg=sEr4E&pd_rd_r=b83cce2c-bd11-4fa9-8cf1-c455a055d84c&pd_rd_i=B07TTSC2MJ&psc=1"><img src="https://m.media-amazon.com/images/I/71MzaybvC4L._AC_UX679_.jpg" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4>Schutzbrille</h4>
+					<a href="https://www.amazon.de/QWORK-Airsoft-Brille-Wechselobjektiven-UV-Schutz-Schießbrille-Paintball-Reiten/dp/B08LDGJS57/ref=asc_df_B08LDGJS57/?tag=googshopde-21&linkCode=df0&hvadid=521772445084&hvpos=&hvnetw=g&hvrand=722719870561241291&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9114647&hvtargid=pla-1280023231122&th=1"><img src="https://m.media-amazon.com/images/I/61Ih4W6lpRL._AC_UX679_.jpg" width="200" height="130"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+				<td>
+					<h4>...</h4>
+					<a href=""><img src="" width="200" height="200"></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
