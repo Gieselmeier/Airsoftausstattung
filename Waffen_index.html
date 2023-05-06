@@ -109,51 +109,56 @@
 		</style>
 		<script>
     		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
-  function setActiveLink() {
-    // Holt alle Links des Inhaltsverzeichnisses
-    var links = document.querySelectorAll('#toc a');
-    // Durchläuft alle Links
-    for (var i = 0; i < links.length; i++) {
-      // Holt den Link und den zugehörigen Bild-Container
-      var link = links[i];
-      var imageContainer = document.querySelector(link.getAttribute('href'));
-      // Wenn der Bild-Container gerade sichtbar ist, markiert den Link als aktiv
-      if (isElementInViewport(imageContainer)) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+function setActiveLink() {
+  // Holt alle Links des Inhaltsverzeichnisses
+  var links = document.querySelectorAll('#toc a');
+  // Durchläuft alle Links
+  for (var i = 0; i < links.length; i++) {
+    // Holt den Link und den zugehörigen Bild-Container
+    var link = links[i];
+    var imageContainer = document.querySelector(link.getAttribute('href'));
+    // Wenn der Bild-Container gerade sichtbar ist, markiert den Link als aktiv
+    if (isElementInViewport(imageContainer)) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
   }
-
-  // Funktion, um zu überprüfen, ob ein Element gerade sichtbar ist
-  function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  // Fügt das Inhaltsverzeichnis hinzu
-  function createToc() {
-    // Holt alle Bild-Container und durchläuft sie
-    var imageContainers = document.querySelectorAll('.image');
-    for (var i = 0; i < imageContainers.length; i++) {
-      var imageContainer = imageContainers[i];
-      // Erstellt einen Link zum Bild-Container im Inhaltsverzeichnis
-      var link = document.createElement('a');
-      link.setAttribute
-	('href', '#' + imageContainer.id);
-link.textContent = imageContainer.querySelector('img').alt;
-// Erstellt eine Listenelement für den Link im Inhaltsverzeichnis
-var listItem = document.createElement('li');
-listItem.appendChild(link);
-// Fügt das Listenelement zum Inhaltsverzeichnis hinzu
-toc.appendChild(listItem);
 }
+
+// Funktion, um zu überprüfen, ob ein Element gerade sichtbar ist
+function isElementInViewport(el) {
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Fügt das Inhaltsverzeichnis hinzu
+function createToc() {
+  // Holt alle Bild-Container und durchläuft sie
+  var imageContainers = document.querySelectorAll('.image');
+  for (var i = 0; i < imageContainers.length; i++) {
+    var imageContainer = imageContainers[i];
+    // Erstellt einen Link zum Bild-Container im Inhaltsverzeichnis
+    var link = document.createElement('a');
+    link.setAttribute('href', '#' + imageContainer.id);
+    link.textContent = imageContainer.querySelector('img').alt;
+    // Erstellt eine Listenelement für den Link im Inhaltsverzeichnis
+    var listItem = document.createElement('li');
+    listItem.appendChild(link);
+    // Fügt das Listenelement zum Inhaltsverzeichnis hinzu
+    toc.appendChild(listItem);
+  }
+  
+  // Markiert den Link des aktuell angezeigten Bildes als aktiv
+  setActiveLink();
+  
+  // Aktualisiert den aktiven Link, wenn das Fenster gescrollt wird
+  window.addEventListener('scroll', setActiveLink);
 }
 
 // Ruft die Funktion zum Erstellen des Inhaltsverzeichnisses auf
