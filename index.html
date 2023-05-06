@@ -108,6 +108,12 @@
   }
 		</style>
 		<script>
+			window.addEventListener('resize', function() {
+			if (window.innerWidth > 1024) {
+				alert('Hör auf zu Zoomen, du HUHRENSON!!!');
+			}
+		});
+			
     		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
   function setActiveLink() {
     // Holt alle Links des Inhaltsverzeichnisses
