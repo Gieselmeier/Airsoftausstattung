@@ -54,12 +54,22 @@
 			}
 
 			/* Gestaltung für das Inhaltsverzeichnis */
-  #toc a {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    text-decoration: none;
-  }
+			#toc {
+  				position: fixed;
+  				top: 0;
+  				left: 0;
+  				width: 200px;
+  				background-color: #fff;
+  				border-radius: 13px;
+  				padding: 10px;
+  				margin-right: 180px; /* ändern Sie den Wert, um den Abstand zu erhöhen */
+			}
+  			#toc a {
+    				display: block;
+    				margin-bottom: 10px;
+    				color: #333;
+    				text-decoration: none;
+  			}
   #toc a:hover {
     background-color: #eee;
   }
@@ -69,14 +79,24 @@
 
   /* Stil für Bilder */
   .image {
-    position: relative;
+    /*position: relative;
     display: inline-block;
     width: 200px;
     height: 200px;
     margin: 10px;
     background-color: #fff;
     overflow: hidden;
-    border-radius: 13px;
+    border-radius: 13px;*/
+	  
+	position: fixed;
+  	top: 0;
+  	right: 0;
+  	width: 150px;
+  	height: 150px;
+  	margin: 10px;
+  	background-color: #fff;
+  	overflow: hidden;
+  	border-radius: 13px;
   } 
   .image:hover .overlay {
     opacity: 0.8;
