@@ -7,9 +7,34 @@
 				background-color: #151515;
 			}
 			
+			h5	{
+				color: #C0392B;
+  				transform: rotate(-35deg);
+  				margin-left: -50px;
+  				width: 100px;
+			
+  				border-radius: 10px;
+  				padding: 10px;
+  				box-shadow: 0px 0px 10px rgba(23, 32, 42);
+  				position: relative;
+  				left: 150px;
+			}
   			h4 {
     				color: #00FFFF; /* Neon-Blau */
  			}
+			h1 {
+  				color: #00FFFF;
+  				font-weight: bold;
+  				font-size: 36px;
+  				text-decoration: underline;
+  				text-underline-position: under;
+  				text-decoration-color: #00FF00; /* Neon-Grün */
+  				text-decoration-thickness: 0.2em;
+  				text-decoration-style: dashed;
+  				text-underline-offset: 0.1em;
+  				padding-left: 2.0em;
+  				padding-right: 2.0em;
+			}
 
 			table {
 				margin: 0 auto;
@@ -28,9 +53,138 @@
 			h4 {
 				margin-top: 0;
 			}
+
+			/* Gestaltung für das Inhaltsverzeichnis */
+  #toc a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+  }
+  #toc a:hover {
+    background-color: #eee;
+  }
+  #toc a.active {
+    color: #00FFFF;
+  }
+
+  /* Stil für Bilder */
+  .image {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: #fff;
+    overflow: hidden;
+  } 
+  .image:hover .overlay {
+    opacity: 0.8;
+  }
+  .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image .overlay span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 		</style>
+		<script>
+    		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
+  function setActiveLink() {
+    // Holt alle Links des Inhaltsverzeichnisses
+    var links = document.querySelectorAll('#toc a');
+    // Durchläuft alle Links
+    for (var i = 0; i < links.length; i++) {
+      // Holt den Link und den zugehörigen Bild-Container
+      var link = links[i];
+      var imageContainer = document.querySelector(link.getAttribute('href'));
+      // Wenn der Bild-Container gerade sichtbar ist, markiert den Link als aktiv
+      if (isElementInViewport(imageContainer)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    }
+  }
+
+  // Funktion, um zu überprüfen, ob ein Element gerade sichtbar ist
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Fügt das Inhaltsverzeichnis hinzu
+  function createToc() {
+    // Holt alle Bild-Container und durchläuft sie
+    var imageContainers = document.querySelectorAll('.image');
+    for (var i = 0; i < imageContainers.length; i++) {
+      var imageContainer = imageContainers[i];
+      // Erstellt einen Link zum Bild-Container im Inhaltsverzeichnis
+      var link = document.createElement('a');
+      link.setAttribute
+	('href', '#' + imageContainer.id);
+link.textContent = imageContainer.querySelector('img').alt;
+// Erstellt eine Listenelement für den Link im Inhaltsverzeichnis
+var listItem = document.createElement('li');
+listItem.appendChild(link);
+// Fügt das Listenelement zum Inhaltsverzeichnis hinzu
+toc.appendChild(listItem);
+}
+}
+
+// Ruft die Funktion zum Erstellen des Inhaltsverzeichnisses auf
+createToc();
+  		</script>
 	</head>
 	<body>
+		<div id="toc"></div>
+  <div class="image" id="Waffen">
+    <img src="C:\Users\jonat\Documents\Webseiten\Airsoftausstattung\BilderInhaltsverzeichnis\WaffenInhaltsverzeichnis.png" alt="Waffen">
+    <div class="overlay">
+      <span>Waffen</span>
+    </div>
+  </div>
+  <div class="image" id="gewehr">
+    <img src="gewehr.jpg" alt="Gewehr">
+    <div class="overlay">
+      <span>Gewehr</span>
+    </div>
+  </div>
+  <div class="image" id="maschinenpistole">
+    <img src="maschinenpistole.jpg" alt="Maschinenpistole">
+    <div class="overlay">
+      <span>Maschinenpistole</span>
+    </div>
+  </div>
+	<center><h1> Gear - Schutzausrüstung </h1></center>
+		<div class="text-container">
+  			<h5>Weitere Vorschläge zur Ergänzung mir schicken ;D</h5>
+		</div>
+
 		<table>
 			<tr>
 				<td>
