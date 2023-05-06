@@ -108,6 +108,12 @@
   }
 		</style>
 		<script>
+			window.addEventListener('resize', function() {
+				if (window.innerWidth > 1024) {
+					alert('Bitte zoomen Sie nicht zu weit heraus.');
+				}
+			});
+			
     		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
 function setActiveLink() {
   // Holt alle Links des Inhaltsverzeichnisses
