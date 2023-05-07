@@ -60,71 +60,68 @@
     				color: #333;
     				text-decoration: none;
   			}
-  #toc a:hover {
-    background-color: #eee;
-  }
-  #toc a.active {
-    color: #00FFFF;
-  }
+  			#toc a:hover {
+    				background-color: #eee;
+  			}
+  			#toc a.active {
+    				color: #00FFFF;
+  			}
 
-  /* Stil für Bilder */
-  .image {
-    position: relative;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    background-color: #fff;
-    overflow: hidden;
-    border-radius: 13px;
-  } 
-.overlay {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  z-index: 1;
-  transform: rotate(-45deg);
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.overlay span {
-  display: block;
-  transform: rotate(45deg);
-}		
-			
-		
-  .image:hover .overlay {
-    opacity: 0.8;
-  }
-  .image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .image .overlay span {
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+  			/* Stil für Bilder */
+  			.image {
+    				position: relative;
+    				display: inline-block;
+    				width: 200px;
+    				height: 200px;
+    				margin: 10px;
+    				background-color: #fff;
+    				overflow: hidden;
+    				border-radius: 13px;
+  			} 
+			.overlay {
+  				position: absolute;
+  				top: -10px;
+  				left: -10px;
+  				z-index: 1;
+  				transform: rotate(-45deg);
+  				background-color: red;
+  				color: white;
+  				padding: 5px 10px;
+  				font-size: 14px;
+  				font-weight: bold;
+			}
+			.overlay span {
+  				display: block;
+  				transform: rotate(45deg);
+			}		
+  			.image:hover .overlay {
+    				opacity: 0.8;
+  			}
+  			.image img {
+    				display: block;
+    				width: 100%;
+    				height: 100%;
+    				object-fit: cover;
+  			}
+  			.image .overlay {
+    				position: absolute;
+    				top: 0;
+    				left: 0;
+    				width: 100%;
+    				height: 100%;
+    				background-color: #333;
+    				opacity: 0;
+    				transition: opacity 0.3s;
+    				display: flex;
+    				justify-content: center;
+    				align-items: center;
+  			}
+  			.image .overlay span {
+    				color: #fff;
+    				font-size: 16px;
+    				font-weight: bold;
+    				text-transform: uppercase;
+  			}
 		</style>
 		<script>
 			window.addEventListener('resize', function() {
@@ -133,56 +130,41 @@
 			}
 		});
 			
-    		// Funktion, um das aktive Inhaltsverzeichnis-Element zu markieren
-  function setActiveLink() {
-    // Holt alle Links des Inhaltsverzeichnisses
-    var links = document.querySelectorAll('#toc a');
-    // Durchläuft alle Links
-    for (var i = 0; i < links.length; i++) {
-      // Holt den Link und den zugehörigen Bild-Container
-      var link = links[i];
-      var imageContainer = document.querySelector(link.getAttribute('href'));
-      // Wenn der Bild-Container gerade sichtbar ist, markiert den Link als aktiv
-      if (isElementInViewport(imageContainer)) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    }
-  }
-
-  // Funktion, um zu überprüfen, ob ein Element gerade sichtbar ist
-  function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  // Fügt das Inhaltsverzeichnis hinzu
-  function createToc() {
-    // Holt alle Bild-Container und durchläuft sie
-    var imageContainers = document.querySelectorAll('.image');
-    for (var i = 0; i < imageContainers.length; i++) {
-      var imageContainer = imageContainers[i];
-      // Erstellt einen Link zum Bild-Container im Inhaltsverzeichnis
-      var link = document.createElement('a');
-      link.setAttribute
-	('href', '#' + imageContainer.id);
-link.textContent = imageContainer.querySelector('img').alt;
-// Erstellt eine Listenelement für den Link im Inhaltsverzeichnis
-var listItem = document.createElement('li');
-listItem.appendChild(link);
-// Fügt das Listenelement zum Inhaltsverzeichnis hinzu
-toc.appendChild(listItem);
-}
-}
-
-// Ruft die Funktion zum Erstellen des Inhaltsverzeichnisses auf
-createToc();
+  		function setActiveLink() {
+    			var links = document.querySelectorAll('#toc a');
+ 			for (var i = 0; i < links.length; i++) {
+      				var link = links[i];
+      				var imageContainer = document.querySelector(link.getAttribute('href'));
+    				if (isElementInViewport(imageContainer)) {
+        				link.classList.add('active');
+      				} else {
+        				link.classList.remove('active');
+      				}
+    			}
+  		}
+  		function isElementInViewport(el) {
+    			var rect = el.getBoundingClientRect();
+    			return (
+      				rect.top >= 0 &&
+      				rect.left >= 0 &&
+      				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      				rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    			);
+  		}
+		function createToc() {
+    			var imageContainers = document.querySelectorAll('.image');
+    			for (var i = 0; i < imageContainers.length; i++) {
+      				var imageContainer = imageContainers[i];
+      				var link = document.createElement('a');
+      				link.setAttribute
+				('href', '#' + imageContainer.id);
+				link.textContent = imageContainer.querySelector('img').alt;
+				var listItem = document.createElement('li');
+				listItem.appendChild(link);
+				toc.appendChild(listItem);
+			}
+		}
+		createToc();
   		</script>
 	</head>
 	<body>
@@ -195,7 +177,7 @@ createToc();
     			<div class="overlay">
       				<span>Schutzausrüstung / Gear</span>
    			</div>
-				</div></a>
+		</div></a>
 	  	<div class="image" id="Waffen">
 	  		<a href="/Airsoftausstattung/Handfeuerwaffen_index.html">
     			<img src="/Airsoftausstattung/images/HandfeuerwaffenInhaltsverzeichnis.png" alt="Waffen">
@@ -209,7 +191,7 @@ createToc();
     			<div class="overlay">
       				<span>LongRangeWaffen</span>
    			</div>
-				</div></a>
+		</div></a>
 		
   		<div class="image" id="In Bearbeitung">
     			<img src="/Airsoftausstattung/images/FragezeichenInhaltsverzeichnis.png" alt="In Bearbeitung">
@@ -226,15 +208,15 @@ createToc();
 			<tr>
 				<td>
 					<h4>Taktischer Helm</h4>
-  <div class="image">
-    <div class="overlay">
-      <span>New</span>
-    </div>
-    <a href="https://www.amazon.de/Taktischer-Militär-Stil-Schutzhelm-Outdoor-Sportarten-Mountainbike/dp/B07JKLXN3G/ref=pd_vtp_h_pd_vtp_h_sccl_3/258-1779023-8581945?pd_rd_w=w0mFM&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=X563D6EF407678VE7528&pd_rd_wg=nqJrq&pd_rd_r=1de369da-ef8e-479f-81e8-3615b9c1e5fd&pd_rd_i=B07JKLXN3G&psc=1">
-      <img src="https://m.media-amazon.com/images/I/71v6ozstyLL._AC_SX679_.jpg" width="200" height="200" alt="Bildbeschreibung">
-    </a>
-  </div>
-</td>
+  					<div class="image">
+    						<div class="overlay">
+      							<span>New</span>
+    						</div>
+    						<a href="https://www.amazon.de/Taktischer-Militär-Stil-Schutzhelm-Outdoor-Sportarten-Mountainbike/dp/B07JKLXN3G/ref=pd_vtp_h_pd_vtp_h_sccl_3/258-1779023-8581945?pd_rd_w=w0mFM&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=X563D6EF407678VE7528&pd_rd_wg=nqJrq&pd_rd_r=1de369da-ef8e-479f-81e8-3615b9c1e5fd&pd_rd_i=B07JKLXN3G&psc=1">
+      						<img src="https://m.media-amazon.com/images/I/71v6ozstyLL._AC_SX679_.jpg" width="200" height="200" alt="Bildbeschreibung">
+    						</a>
+  					</div>
+				</td>
 				<td>
 					<h4>Sturmhaube</h4>
 					<a href="https://www.amazon.de/fuinloth-Sturmhauben-Gesichtshaube-Fahrrad-Gesichtsmaske-Balaclavas/dp/B086Z2WR6Y/ref=pd_vtp_h_pd_vtp_h_sccl_1/258-1779023-8581945?pd_rd_w=A3mNb&content-id=amzn1.sym.d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_p=d9eee8d5-1140-4c78-983a-746c7af2b0c7&pf_rd_r=59W5TT4KEJPE8N4D6EHT&pd_rd_wg=sEr4E&pd_rd_r=b83cce2c-bd11-4fa9-8cf1-c455a055d84c&pd_rd_i=B086Z2WR6Y&psc=1"><img src="https://m.media-amazon.com/images/I/61NjK2YHpHL._AC_UX679_.jpg" width="120" height="190"></a>
